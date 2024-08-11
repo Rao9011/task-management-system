@@ -42,6 +42,30 @@
                                                     <button type="submit" class="btn btn-primary">Comment</button>
                                                 </form>
                                             </div>
+
+                                            <br><br>
+
+                                            <table class="table lms_table_active3 dataTable no-footer dtr-inline"
+                                                id="DataTables_Table_1" role="grid"
+                                                aria-describedby="DataTables_Table_1_info" style="width: 886px;">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th>Task Name</th>
+                                                        <th>User Name</th>
+                                                        <th>Comment</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($comments as $comment)
+                                                    <tr>
+                                                        <td>{{ $comment->task->name ?? 'N/A' }}</td>
+                                                        <td>{{ $comment->user->name ?? 'N/A' }}</td>
+                                                        <td>{{ $comment->comment }}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

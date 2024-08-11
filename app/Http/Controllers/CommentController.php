@@ -15,7 +15,12 @@ class CommentController extends Controller
     public function getTaskCommentTask($id)
     {   
         $tasks = Task::where('id',$id)->first();
-         return  view('admin.module.comment.index',compact('tasks'));
+
+        $comments = Comment::with(['user:id,name', 'task:id,name'])
+        ->where('task_id', $id)
+        ->get();
+
+                 return  view('admin.module.comment.index',compact('tasks','comments'));
     }
     public function getTaskComment(Request $request,$id)
     {   
