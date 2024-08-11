@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function getTaskCommentTask($id)
+    {   
+        $tasks = Task::where('id',$id)->first();
+         return  view('admin.module.comment.index',compact('tasks'));
+    }
+    public function getTaskComment(Request $request,$id)
+    {   
+        $auth = Auth::user()->id;
+        $task = Task::find($id);
+        
+        $comment = new Comment();
+        $comment->comment= $request->comment;
+        $comment->user_id=$auth;
+        $comment->task_id=$task->id;
+        $comment->save();
+        return  redirect()->back();
     }
 
     /**

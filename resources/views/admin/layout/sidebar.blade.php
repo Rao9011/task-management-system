@@ -57,12 +57,12 @@
         @endif
         @if (auth()->user()->roles()->where('name', 'Employee')->exists())
             <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
+                <a class="has-arrow" href="{{route('user.task.list')}}" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="img/menu-icon/1.svg" alt>
                     </div>
                     <div class="nav_title">
-                        <span>Employe </span>
+                        <span>Task List </span>
                     </div>
                 </a>
 

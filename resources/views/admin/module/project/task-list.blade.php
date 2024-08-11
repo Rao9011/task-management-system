@@ -18,14 +18,7 @@
                                     <h4>shorting Arrow</h4>
                                     <div class="box_right d-flex lms_block">
 
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            Add Task
-                                        </button>
-
-                                        {{-- <div class="add_button ms-2">
-                                            <a href="{{route('admin.add.project')}}"class="btn_1">Add Project</a>
-                                        </div> --}}
+                                        
                                     </div>
                                 </div>
                                 <div class="QA_table mb_30">
@@ -66,14 +59,12 @@
                                                                 <a href="{{route('manage.task.delete',$tasks->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                                             </td>
                                                             <td>
-                                                                <a href="{{route('manager.comment.task.list',$tasks->id)}}" class="btn btn-info btn-sm">Comment</a>
+                                                                <a href="{{route('admin.comment.task.list',$tasks->id)}}" class="btn btn-info btn-sm">Comment</a>
                                                             </td>
                                                             <td>{{ $tasks->creator->name }}</td>
                                                             <td>{{ $tasks->assignee->name }}</td>
                                                             <td>{{ $tasks->status }}</td>
                                                             <td>{{ $tasks->priority }}</td>
-
-
 
                                                         </tr>
                                                     @endforeach
@@ -95,75 +86,4 @@
     </div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Project</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('manage.task.assign') }}" method="POST">
-                        @csrf
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label" for="inputEmail4">Name</label>
-                                <input type="text" class="form-control" name="name" id="inputName" placeholder="Name">
-                            </div>
-                            <div class=" col-md-6">
-                                <label class="form-label" for="inputPassword4">Description</label>
-                                <input type="text" class="form-control" name="description" id="inputPassword4"
-                                    placeholder="Description">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="inputAddress">Due date</label>
-                            <input type="date" class="form-control" name="due_date" id="inputAddress"
-                                placeholder="Start Date">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="inputState">Status</label>
-                            <select id="status" name="status" class="form-select">
-                                <option selected="">Choose...</option>
-                                <option value="pending">pending</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="inputState">Priority</label>
-                            <select id="priority" name="priority" class="form-select">
-                                <option selected="">Choose...</option>
-                                <option value="low">low</option>
-                                <option value="medium">medium</option>
-                                <option value="high">high</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="inputState">Project</label>
-                            <select id="project_id" name="project_id" class="form-select">
-                                <option selected="">Choose...</option>
-                                @foreach($projet as $projet)
-                                <option value="{{$projet->id }}">{{$projet->name }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="inputState">Employe</label>
-                            <select id="assigned_to" name="assigned_to" class="form-select">
-                                <option selected="">Choose...</option>
-                                @foreach($employees as $employee)
-                                <option value="{{$employee->id }}">{{$employee->name }}</option>
-                            @endforeach
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Assign Task</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
 @endsection

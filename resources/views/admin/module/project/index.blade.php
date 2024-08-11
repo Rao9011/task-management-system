@@ -42,9 +42,10 @@
                                                         <th>Description</th>
                                                         <th>Start date</th>
                                                         <th>End date</th>
-                                                        <th>Created By</th>
                                                         <th>Edit</th>
                                                         <th>Delete</th>
+                                                        <th>Task List</th>
+                                                        <th>Created By</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -61,6 +62,9 @@
                                                             </td>
                                                             <td>
                                                                 <a href="{{route('admin.project.delete',$project->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{route('admin.get.task.list',$project->id)}}" class="btn btn-success btn-sm">Task List</a>
                                                             </td>
 
 

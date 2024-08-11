@@ -28,6 +28,17 @@ class TaskController extends Controller
         return view('admin.module.Task.index', compact('employees', 'projet','tasks'));
     }
 
+    public function getTaskList($id)
+    {
+    
+
+        $tasks = Task::with('assignee','creator','project')
+        ->where('project_id',$id)
+        ->get();
+
+        return view('admin.module.project.task-list', compact('tasks'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
