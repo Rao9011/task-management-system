@@ -24,6 +24,15 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
+                <div class="mb-3">
+                    <label  class="form-label">Role</label>
+                    <select name="role" id="" class="form-control">
+                        <option value="">Select Role</option>
+                        @foreach ($role as $role)
+                        <option value="{{$role->id}}">{{$role->name}}</option>
+                        @endforeach
+                    </select>
+                                    </div>
                 
                 <button type="submit" class="btn btn-primary w-100">Sign Up</button>
             </form>

@@ -1,4 +1,3 @@
-
 <nav class="sidebar dark_sidebar">
     <div class="logo d-flex justify-content-between">
         <a class="large_logo" href="index.html"><img src="img/logo_white.png" alt></a>
@@ -8,34 +7,59 @@
         </div>
     </div>
     <ul id="sidebar_menu">
-        <li class>
-            <a class="has-arrow" href="#" aria-expanded="false">
-                <div class="nav_icon_small">
-                    <img src="img/menu-icon/1.svg" alt>
-                </div>
-                <div class="nav_title">
-                    <span>Dashboard </span>
-                </div>
-            </a>
-            <ul>
-                <li><a href="index_2.html">Default</a></li>
-                <li><a href="index_3.html">Light Sidebar</a></li>
-                <li><a href="index.html">Dark Sidebar</a></li>
-            </ul>
-        </li>
+        @if (auth()->user()->roles()->where('name', 'Admin')->exists())
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/1.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Admin </span>
+                    </div>
+                </a>
+
+            </li>
+        @endif
+        @if (auth()->user()->roles()->where('name', 'Manager')->exists())
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/1.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Manager </span>
+                    </div>
+                </a>
+
+            </li>
+        @endif
+        @if (auth()->user()->roles()->where('name', 'Employee')->exists())
+            <li class>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/1.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Employe </span>
+                    </div>
+                </a>
+
+            </li>
+        @endif
+
         <li>
             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <div>
                     <span class="ms-4">Logout</span>
                 </div>
             </a>
-        
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </li>
-        
-       
+
+
 
     </ul>
 </nav>
