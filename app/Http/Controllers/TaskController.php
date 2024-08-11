@@ -7,6 +7,8 @@ use App\Models\Task;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class TaskController extends Controller
 {
@@ -38,6 +40,37 @@ class TaskController extends Controller
 
         return view('admin.module.project.task-list', compact('tasks'));
     }
+
+    public function getPDF($id)
+    {
+        $tasks = Task::with('assignee', 'creator', 'project')
+            ->where('project_id', $id)
+            ->get();
+    
+        // Pass the tasks data as an array to the view
+        $pdf = PDF::loadView('admin.module.pdf.pdf', ['tasks' => $tasks])
+            ->setPaper('A4', 'portrait');
+    
+        return $pdf->stream('data.pdf');
+    }
+
+
+    public function getChart($id)
+    {
+        $tasks = Task::with('assignee', 'creator', 'project')
+        ->where('project_id', $id)
+        ->get();
+
+        $chartArr = [
+            'name' => $slug,
+            'data' => null
+        ];
+       
+        return response()->json($chartArr);
+    }
+
+   
+    
 
     /**
      * Show the form for creating a new resource.

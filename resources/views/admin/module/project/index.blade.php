@@ -39,13 +39,14 @@
                                                 <thead>
                                                     <tr role="row">
                                                         <th>Project Name</th>
-                                                        <th>Description</th>
                                                         <th>Start date</th>
                                                         <th>End date</th>
                                                         <th>Edit</th>
                                                         <th>Delete</th>
                                                         <th>Task List</th>
-                                                        <th>Created By</th>
+                                                        <th>Download</th>
+                                                        <th>Chart</th>
+                                                        <th>Description</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -53,10 +54,8 @@
                                                         <tr role="row" class="odd">
 
                                                             <td>{{ $project->name }}</td>
-                                                            <td>{{ $project->description }}</td>
                                                             <td>{{ $project->start_date }}</td>
                                                             <td>{{ $project->end_date }}</td>
-                                                            <td>{{ $project->user->name }}</td>
                                                             <td>
                                                                 <a href="{{route('admin.project.edit',$project->id)}}" class="btn btn-info btn-sm">Edit</a>
                                                             </td>
@@ -64,11 +63,15 @@
                                                                 <a href="{{route('admin.project.delete',$project->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                                             </td>
                                                             <td>
-                                                                <a href="{{route('admin.get.task.list',$project->id)}}" class="btn btn-success btn-sm">Task List</a>
+                                                                <a href="{{route('admin.get.task.list',$project->id)}}" class="btn btn-success btn-sm">TaskList</a>
                                                             </td>
-
-
-
+                                                            <td>
+                                                                <a href="{{route('admin.download.pdf',$project->id)}}" class="btn btn-success">PDF</a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{route('admin.chart.view',$project->id)}}" class="btn btn-success">Chart</a>
+                                                            </td>
+                                                            <td>{{ $project->description }}</td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

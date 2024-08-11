@@ -38,6 +38,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/project/delete/{id}', [ProjectController::class, 'getProjectDelete'])->name('admin.project.delete');
     Route::get('admin/task/comment/{id}', [CommentController::class, 'getTaskCommentTask'])->name('admin.comment.task.list');
     Route::get('admin/task/list/{id}', [TaskController::class, 'getTaskList'])->name('admin.get.task.list');
+    Route::get('admin/download/report/{id}', [TaskController::class, 'getPDF'])->name('admin.download.pdf');
+    Route::get('admin/chart/view/{id}', [TaskController::class, 'getChart'])->name('admin.chart.view');
 
 });
 
