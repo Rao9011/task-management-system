@@ -9,7 +9,7 @@
     <ul id="sidebar_menu">
         @if (auth()->user()->roles()->where('name', 'Admin')->exists())
             <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
+                <a class="has-arrow" href="{{route('admin.dashboard')}}" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="img/menu-icon/1.svg" alt>
                     </div>
@@ -19,15 +19,37 @@
                 </a>
 
             </li>
+            <li class>
+                <a class="has-arrow" href="{{route('admin.project')}}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/1.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Project </span>
+                    </div>
+                </a>
+
+            </li>
         @endif
         @if (auth()->user()->roles()->where('name', 'Manager')->exists())
             <li class>
-                <a class="has-arrow" href="#" aria-expanded="false">
+                <a class="has-arrow" href="{{route('manager.dashboard')}}" aria-expanded="false">
                     <div class="nav_icon_small">
                         <img src="img/menu-icon/1.svg" alt>
                     </div>
                     <div class="nav_title">
                         <span>Manager </span>
+                    </div>
+                </a>
+
+            </li>
+            <li class>
+                <a class="has-arrow" href="{{route('manage.task')}}" aria-expanded="false">
+                    <div class="nav_icon_small">
+                        <img src="img/menu-icon/1.svg" alt>
+                    </div>
+                    <div class="nav_title">
+                        <span>Task </span>
                     </div>
                 </a>
 

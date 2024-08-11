@@ -3004,7 +3004,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr[role=row]>th:first-child::before {
     font-size: 8px;
     line-height: 14px;
     font-weight: 600;
-    background-color: #fef1f2;
+    background-color: #dc2130;
     box-shadow: 6px 6px 12px rgba(0, 0, 0, .08), -6px -6px 12px #fff
 }
 
